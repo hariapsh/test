@@ -5,13 +5,9 @@ on: [push]
 jobs:
   job_1:
     name: Add 3 and 7
-    runs-on: codebuild-aws-shr-${{ github.run_id }}-${{ github.run_attempt }}
+    runs-on: codebuild-aws-shr-${{ github.run_id }}-${{ github.run_attempt }}-with-buildspec
     steps:
       - shell: bash
         run: |
           expr 3 + 7 > math-homework.txt
       - name: Upload math result for job 1
-        uses: actions/upload-artifact@v4
-        with:
-          name: homework_pre
-          path: math-homework.txt
