@@ -5,7 +5,10 @@ on: [push]
 jobs:
   job_1:
     name: Add 3 and 7
-    runs-on: codebuild-aws-shr-${{ github.run_id }}-${{ github.run_attempt }}-with-buildspec
+    runs-on: 
+      - codebuild-aws-shr-${{ github.run_id }}-${{ github.run_attempt }}-with-buildspec
+      - image:arm-3.0
+      - instance-size:small
     steps:
       - shell: bash
         run: |
